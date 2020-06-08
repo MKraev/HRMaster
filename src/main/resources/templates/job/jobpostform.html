@@ -82,35 +82,6 @@
                             </span>
                         </div>
                     </div>
-
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-md-11 ">
-                                    <h1 class="panel-title">Skills</h1>
-                                </div>
-                                <div class="col-md-1">
-                                    <a class="btn btn-default" href="#"
-                                       th:href="@{'/jobPost/' + ${jobPost.id} + '/jobskill'}" role="button">View</a>
-                                </div>
-                            </div>
-                        </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <ul th:if="${not #lists.isEmpty(jobPost.jobSkills)}">
-                                            <li th:remove="all">5 Java</li>
-                                            <li th:remove="all">6 C#</li>
-                                            <li th:remove="all">8 HTML</li>
-                                            <li th:each="jobSkills : ${jobPost.jobSkills}"
-                                                th:text="${(jobSkills.getSkillLevel() +
-                                                ' ' + jobSkills.getSkillName())}">4 CSS
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
                     <div class="row">
                         <button type="submit" class="btn btn-default">Submit</button>
                     </div>
