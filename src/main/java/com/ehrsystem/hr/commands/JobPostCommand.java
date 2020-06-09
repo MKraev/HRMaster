@@ -1,10 +1,12 @@
 package com.ehrsystem.hr.commands;
 
-import com.ehrsystem.hr.model.JobSkill;
-import com.ehrsystem.hr.model.User;
 
+import com.ehrsystem.hr.model.User;
+import lombok.NoArgsConstructor;
+import java.util.HashSet;
 import java.util.Set;
 
+@NoArgsConstructor
 public class JobPostCommand {
 
     private Long id;
@@ -13,7 +15,7 @@ public class JobPostCommand {
     private String requirement;
     private String city;
     private User poster;
-    private Set<JobSkillCommand> jobSkills;
+    private Set<JobSkillCommand> jobSkills  = new HashSet<>();
     private Set<User> usersApplied;
 
     public Long getId() {

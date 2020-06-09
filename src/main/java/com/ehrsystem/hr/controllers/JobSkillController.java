@@ -39,6 +39,7 @@ public class JobSkillController {
     public String showJobSkill(@PathVariable String jobPostId,
                                        @PathVariable String id, Model model){
         model.addAttribute("jobSkill", jobSkillService.findByJobPostIdAndSkillId(Long.valueOf(jobPostId), Long.valueOf(id)));
+
         return "job/jobskill/show";
     }
 

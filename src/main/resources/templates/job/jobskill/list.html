@@ -33,7 +33,6 @@
                             <a class="btn btn-default" href="#" th:href="@{'/job/' + ${jobPost.id} + '/jobskill/new'}" role="button">New</a>
                         </div>
                     </div>
-
                 </div>
                 <div class="panel-body">
 
@@ -63,7 +62,7 @@
                                 <td><a href="#">Delete</a></td>
                             </tr>
                             <tr th:each="jobSkill : ${jobPost.jobSkills}">
-                                <td th:text="${jobSkill.skillName}  + ' ' + ${jobSkill.skillLevel}">Java</td>
+                                <td th:text="${jobSkill.skillName}">Java</td>
                                 <td th:text="${jobSkill.skillLevel}">3</td>
                                 <td><a href="#" th:href="@{'/job/' + ${jobPost.id} + '/jobskill/' + ${jobSkill.id} + '/show'}">View</a></td>
                                 <td><a href="#" th:href="@{'/job/' + ${jobPost.id} + '/jobskill/' + ${jobSkill.id} + '/update'}">Update</a></td>

@@ -2,6 +2,7 @@ package com.ehrsystem.hr.model;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,8 +19,8 @@ public class JobPost {
     @OneToOne(cascade = CascadeType.ALL)
     private User poster;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<JobSkill> jobSkills;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobPost")
+    private Set<JobSkill> jobSkills = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "jobpost_user",
