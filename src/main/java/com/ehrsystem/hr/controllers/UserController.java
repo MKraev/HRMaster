@@ -28,19 +28,19 @@ public class UserController {
 
         model.addAttribute("user", new User());
 
-        return "registration";
+        return "user/registration";
     }
 
     @RequestMapping(value = "/doregister", method = RequestMethod.POST)
     public String doCheckout(@Valid User user, BindingResult bindingResult){
 
         if (bindingResult.hasErrors()) {
-            return "registration";
+            return "user/registration";
         }
 
         User savedUser = userRepository.save(user);
 
-        return "registrationcompleted";
+        return "user/registrationcompleted";
 
     }
 }

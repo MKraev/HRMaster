@@ -23,14 +23,6 @@ public class IndexController {
     }
 
 
-    @RequestMapping({"/login","/loginform"})
-    public String getIndexPageLogin(Model model) {
-
-        model.addAttribute("user", new User());
-
-        return "loginform";
-    }
-
     @RequestMapping({"", "/", "/index"})
     public String getIndexPage(Model model) {
 
