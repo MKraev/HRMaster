@@ -1,19 +1,29 @@
-package com.ehrsystem.hr.model;
+package com.ehrsystem.hr.commands;
 
-import javax.persistence.*;
-import java.util.Set;
+import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
-@Entity
-public class User {
+/**
+ * Created by jt on 2/1/16.
+ */
+public class UserCommand {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    @NotEmpty
+    @Size(min = 2, max = 50)
     private String userName;
+
+    @NotEmpty
+    @Size(min = 2, max = 50)
     private String password;
+
+    @NotEmpty
+    @Size(min = 2, max = 50)
     private String firstName;
+
+    @NotEmpty
+    @Size(min = 2, max = 50)
     private String lastName;
+
     private String role;
     private String seniorityLevel;
     private String status;
@@ -21,23 +31,6 @@ public class User {
     private String userType;
     private String resume;
     private String city;
-
-
-    @Lob
-    private Byte[] image;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<UserSkill> userSkills;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<JobPost> jobPosted;
-
-    @ManyToMany
-    private Set<JobPost> jobApplied;
-
-    public Set<JobPost> getJobPosted() {
-        return jobPosted;
-    }
 
     public String getUserName() {
         return userName;
@@ -53,42 +46,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public void setJobPosted(Set<JobPost> jobPosted) {
-        this.jobPosted = jobPosted;
-    }
-
-    public Set<JobPost> getJobApplied() {
-        return jobApplied;
-    }
-
-    public void setJobApplied(Set<JobPost> jobApplied) {
-        this.jobApplied = jobApplied;
-    }
-
-    public Byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(Byte[] image) {
-        this.image = image;
-    }
-
-    public String getResume() {
-        return resume;
-    }
-
-    public void setResume(String resume) {
-        this.resume = resume;
-    }
-
-    public Set<UserSkill> getUserSkills() {
-        return userSkills;
-    }
-
-    public void setUserSkills(Set<UserSkill> userSkills) {
-        this.userSkills = userSkills;
     }
 
     public String getFirstName() {
@@ -131,14 +88,6 @@ public class User {
         this.status = status;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getEmailUser() {
         return emailUser;
     }
@@ -153,6 +102,14 @@ public class User {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public String getResume() {
+        return resume;
+    }
+
+    public void setResume(String resume) {
+        this.resume = resume;
     }
 
     public String getCity() {
