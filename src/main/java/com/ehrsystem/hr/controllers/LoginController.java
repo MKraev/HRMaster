@@ -17,12 +17,12 @@ import javax.validation.Valid;
 @Controller
 public class LoginController {
 
-    @RequestMapping("/login")
+    @RequestMapping({"/login","/loginform"})
     public String showLoginForm(Model model){
 
         model.addAttribute("loginCommand", new LoginCommand());
 
-        return "loginform";
+        return "user/loginform";
     }
 
     @RequestMapping("logout-success")
@@ -35,7 +35,7 @@ public class LoginController {
     public String doLogin(@Valid LoginCommand loginCommand, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
-            return "loginform";
+            return "user/loginform";
         }
 
         return "redirect:index";
