@@ -1,6 +1,7 @@
 package com.ehrsystem.hr.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -8,13 +9,13 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long userID;
 
     private String username;
     private String password;
     private String firstName;
     private String lastName;
-    private String role;
+    private String jobTitle;
     private String seniorityLevel;
     private String status;
     private String emailUser;
@@ -23,14 +24,16 @@ public class User {
     private String city;
 
 
+
     @Lob
     private Byte[] image;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<UserSkill> userSkills;
+    private Set<UserSkill> userSkills = new HashSet<>();
+
 
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<JobPost> jobPosted;
+    private Set<JobPost> jobPosted  = new HashSet<>();
 
     @ManyToMany
     private Set<JobPost> jobApplied;
@@ -87,8 +90,8 @@ public class User {
         return userSkills;
     }
 
-    public void setUserSkills(Set<UserSkill> userSkills) {
-        this.userSkills = userSkills;
+    public void setUserSkill(Set<UserSkill> userSkill) {
+        this.userSkills = userSkill;
     }
 
     public String getFirstName() {
@@ -107,12 +110,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getRole() {
-        return role;
+    public String getJobTitle() {
+        return jobTitle;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
     }
 
     public String getSeniorityLevel() {
@@ -131,12 +134,12 @@ public class User {
         this.status = status;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUserId() {
+        return userID;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long userID) {
+        this.userID = userID;
     }
 
     public String getEmailUser() {
@@ -161,5 +164,11 @@ public class User {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public User addUserSkill(UserSkill userSkill){
+        userSkill.setUser(this);
+        this.userSkills.add(userSkill);
+        return this;
     }
 }

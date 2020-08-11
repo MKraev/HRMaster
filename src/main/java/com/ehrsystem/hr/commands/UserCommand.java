@@ -1,12 +1,14 @@
 package com.ehrsystem.hr.commands;
 
+import com.ehrsystem.hr.model.JobPost;
 import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
-/**
- * Created by jt on 2/1/16.
- */
+
 public class UserCommand {
+
+    private Long userID;
 
     @NotEmpty
     @Size(min = 2, max = 50)
@@ -24,13 +26,15 @@ public class UserCommand {
     @Size(min = 2, max = 50)
     private String lastName;
 
-    private String role;
+    private String jobTitle;
     private String seniorityLevel;
     private String status;
     private String emailUser;
     private String userType;
     private String resume;
     private String city;
+
+    private Set<UserSkillCommand> userSkills;
 
     public String getUserName() {
         return userName;
@@ -64,12 +68,12 @@ public class UserCommand {
         this.lastName = lastName;
     }
 
-    public String getRole() {
-        return role;
+    public String getJobTitle() {
+        return jobTitle;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
     }
 
     public String getSeniorityLevel() {
@@ -118,5 +122,21 @@ public class UserCommand {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public Set<UserSkillCommand> getUserSkills() {
+        return userSkills;
+    }
+
+    public void setUserSkills(Set<UserSkillCommand> userSkills) {
+        this.userSkills = userSkills;
+    }
+
+    public Long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Long userID) {
+        this.userID = userID;
     }
 }

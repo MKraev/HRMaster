@@ -9,9 +9,9 @@ import java.util.Set;
 
 public interface UserService {
 
-    Set<User> getJobPost();
+    Set<User> getUser();
 
-    User save(User jobPost);
+    User save(User user);
 
     UserCommand saveUserCommand(UserCommand command);
 
