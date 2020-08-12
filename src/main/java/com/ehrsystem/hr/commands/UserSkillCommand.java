@@ -15,12 +15,12 @@ public class UserSkillCommand {
         this.userSkillId = userSkillId;
     }
 
-    public Long getJobPostId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setJobPostId(Long jobPostId) {
-        this.userId = jobPostId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getSkillName() {
@@ -39,6 +39,5 @@ public class UserSkillCommand {
         this.skillLevel = skillLevel;
     }
 
-    public void setUserId(Long userId) {
-    }
+
 }
