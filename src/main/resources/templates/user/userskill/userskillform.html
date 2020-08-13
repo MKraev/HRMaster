@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Edit Job Skills</title>
+    <title>Edit User Skills</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
@@ -20,9 +20,9 @@
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <!--/*@thymesVar id="jobSkill" type="com.ehrsystem.hr.commands.JobSkillCommand"*/-->
-            <form  th:object="${jobSkill}" th:action="@{'/job/' + ${jobSkill.getJobPostId()} + '/jobskill'} " method="post">
-                <input type="hidden" th:field="*{id}"/>
+            <!--/*@thymesVar id="userSkill" type="com.ehrsystem.hr.commands.UserSkillCommand"*/-->
+            <form  th:object="${userSkill}" th:action="@{'/user/' + ${userSkill.getUserId()} + '/userskill'} " method="post">
+                <input type="hidden" th:field="*{userId}"/>
                 <div class="pannel-group">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -32,13 +32,13 @@
                             <div class="row">
                                 <div class="col-md-3 form-group">
                                     <label>Skill:</label>
-                                    <input type="text" class="form-control" th:field="*{skillName}"/>
+                                    <input type="text" class="form-control" th:field="*{userSkillName}"/>
                                 </div>
 
                                 <div class="col-md-5 form-group">
                                     <label>Level:</label>
                                         <label for="level">Skill Level (between 1 and 10):</label>
-                                        <input type="range" id="level" name="level" min="1" max="10" th:field="*{skillLevel}">
+                                        <input type="range" id="level" name="level" min="1" max="10" th:field="*{userSkillLevel}">
                                 </div>
                             </div>
                         </div>

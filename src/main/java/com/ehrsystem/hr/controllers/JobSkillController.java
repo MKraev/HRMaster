@@ -80,7 +80,7 @@ public class JobSkillController {
 
 
     @GetMapping("job/{jobPostId}/jobskill/{id}/delete")
-    public String deleteIngredient(@PathVariable String jobPostId,
+    public String deleteJobSkill(@PathVariable String jobPostId,
                                    @PathVariable String id){
 
         jobSkillService.deleteById(Long.valueOf(jobPostId), Long.valueOf(id));

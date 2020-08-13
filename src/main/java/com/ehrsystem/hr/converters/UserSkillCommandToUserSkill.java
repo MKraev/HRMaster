@@ -23,9 +23,9 @@ public class UserSkillCommandToUserSkill implements Converter<UserSkillCommand, 
         final UserSkill userSkill = new UserSkill();
         userSkill.setId(source.getUserSkillId());
 
-        if(source.getJobPostId() != null){
+        if(source.getUserId() != null){
             User user = new User();
-            user.setUserId(source.getJobPostId());
+            user.setUserId(source.getUserId());
             userSkill.setUser(user);
             user.addUserSkill(userSkill);
         }

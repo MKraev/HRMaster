@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>List Job Skills</title>
+    <title>List User Skills</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -17,8 +17,8 @@
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<!--/*@thymesVar id="jobPost" type="com.ehrsystem.model.JobPost"*/-->
-<!--/*@thymesVar id="jobSkill" type="java.util.Set<com.ehrsystem.commands.jobSkillCommand>"*/-->
+<!--/*@thymesVar id="user" type="com.ehrsystem.model.User"*/-->
+<!--/*@thymesVar id="userSkill" type="java.util.Set<com.ehrsystem.commands.userSkillCommand>"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -30,13 +30,13 @@
                             <h1 class="panel-title">Skills</h1>
                         </div>
                         <div class="col-md-1">
-                            <a class="btn btn-default" href="#" th:href="@{'/job/' + ${jobPost.id} + '/jobskill/new'}" role="button">New</a>
+                            <a class="btn btn-default" href="#" th:href="@{'/user/' + ${user.userId} + '/userskill/new'}" role="button">New</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel-body">
 
-                    <div class="table-responsive" th:if="${not #lists.isEmpty(jobPost.jobSkills)}">
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(user.userSkills)}">
                         <table class="table table-hover ">
                             <thead class="thead-inverse">
                             <tr>
@@ -61,12 +61,12 @@
                                 <td><a href="#">Update</a></td>
                                 <td><a href="#">Delete</a></td>
                             </tr>
-                            <tr th:each="jobSkill : ${jobPost.jobSkills}">
-                                <td th:text="${jobSkill.skillName}">Java</td>
-                                <td th:text="${jobSkill.skillLevel}">3</td>
-                                <td><a href="#" th:href="@{'/job/' + ${jobPost.id} + '/jobskill/' + ${jobSkill.id} + '/show'}">View</a></td>
-                                <td><a href="#" th:href="@{'/job/' + ${jobPost.id} + '/jobskill/' + ${jobSkill.id} + '/update'}">Update</a></td>
-                                <td><a href="#" th:href="@{'/job/' + ${jobPost.id} + '/jobskill/' + ${jobSkill.id} + '/delete'}">Delete</a></td>
+                            <tr th:each="jobSkill : ${user.userSkills}">
+                                <td th:text="${userSkill.userSkillName}">Java</td>
+                                <td th:text="${userSkill.userSkillLevel}">3</td>
+                                <td><a href="#" th:href="@{'/user/' + ${user.userId} + '/userskill/' + ${userSkill.userSkillId} + '/show'}">View</a></td>
+                                <td><a href="#" th:href="@{'/user/' + ${user.userId} + '/userskill/' + ${userSkill.userSkillId} + '/update'}">Update</a></td>
+                                <td><a href="#" th:href="@{'/user/' + ${user.userId} + '/userskill/' + ${userSkill.userSkillId} + '/delete'}">Delete</a></td>
                             </tr>
                         </table>
                     </div>
