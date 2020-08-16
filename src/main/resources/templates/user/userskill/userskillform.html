@@ -21,8 +21,9 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <!--/*@thymesVar id="userSkill" type="com.ehrsystem.hr.commands.UserSkillCommand"*/-->
+            <!--/*@thymesVar id="user" type="com.ehrsystem.hr.model.User"*/-->
             <form  th:object="${userSkill}" th:action="@{'/user/' + ${userSkill.getUserId()} + '/userskill'} " method="post">
-                <input type="hidden" th:field="*{userId}"/>
+                <input type="hidden" th:field="*{user.userId}"/>
                 <div class="pannel-group">
                     <div class="panel panel-primary">
                         <div class="panel-heading">

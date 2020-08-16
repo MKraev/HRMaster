@@ -9,7 +9,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userID;
+    private Long userId;
 
 
     private String username;
@@ -23,8 +23,6 @@ public class User {
     private String userType;
     private String resume;
     private String city;
-
-
 
     @Lob
     private Byte[] image;
@@ -91,8 +89,8 @@ public class User {
         return userSkills;
     }
 
-    public void setUserSkill(Set<UserSkill> userSkill) {
-        this.userSkills = userSkill;
+    public void setUserSkills(Set<UserSkill> userSkills) {
+        this.userSkills = userSkills;
     }
 
     public String getFirstName() {
@@ -136,11 +134,11 @@ public class User {
     }
 
     public Long getUserId() {
-        return userID;
+        return userId;
     }
 
-    public void setUserId(Long userID) {
-        this.userID = userID;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getEmailUser() {

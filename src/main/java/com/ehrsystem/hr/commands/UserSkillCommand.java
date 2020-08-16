@@ -4,8 +4,8 @@ public class UserSkillCommand {
 
     private Long userSkillId;
     private Long userId;
-    private String skillName;
-    private int skillLevel;
+    private String userSkillName;
+    private int userSkillLevel;
 
     public Long getUserSkillId() {
         return userSkillId;
@@ -23,21 +23,19 @@ public class UserSkillCommand {
         this.userId = userId;
     }
 
-    public String getSkillName() {
-        return skillName;
+    public String getUserSkillName() {
+        return userSkillName;
     }
 
-    public void setSkillName(String skillName) {
-        this.skillName = skillName;
+    public void setUserSkillName(String userSkillName) {
+        this.userSkillName = userSkillName;
     }
 
-    public int getSkillLevel() {
-        return skillLevel;
+    public int getUserSkillLevel() {
+        return userSkillLevel;
     }
 
-    public void setSkillLevel(int skillLevel) {
-        this.skillLevel = skillLevel;
+    public void setUserSkillLevel(int userSkillLevel) {
+        this.userSkillLevel = userSkillLevel;
     }
-
-
 }

@@ -66,8 +66,8 @@ public class UserSkillServiceImpl implements UserSkillService {
 
             if (userSkillOptional.isPresent()) {
                 UserSkill userSkillFound = userSkillOptional.get();
-                userSkillFound.setUserSkillName(command.getSkillName());
-                userSkillFound.setUserSkillLevel(command.getSkillLevel());
+                userSkillFound.setUserSkillName(command.getUserSkillName());
+                userSkillFound.setUserSkillLevel(command.getUserSkillLevel());
             } else {
                 //add new Skill
                 UserSkill userSkill = userSkillCommandToUserSkill.convert(command);
@@ -84,7 +84,7 @@ public class UserSkillServiceImpl implements UserSkillService {
             //check by description
             if (!savedUserSkillOptional.isPresent()) {
                 savedUserSkillOptional = savedUser.getUserSkills().stream()
-                        .filter(userSkill -> userSkill.getUserSkillName().equals(command.getSkillName()))
+                        .filter(userSkill -> userSkill.getUserSkillName().equals(command.getUserSkillName()))
                         .findFirst();
             }
 

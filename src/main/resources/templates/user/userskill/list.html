@@ -17,7 +17,7 @@
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<!--/*@thymesVar id="user" type="com.ehrsystem.model.User"*/-->
+
 <!--/*@thymesVar id="userSkill" type="java.util.Set<com.ehrsystem.commands.userSkillCommand>"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
@@ -30,7 +30,8 @@
                             <h1 class="panel-title">Skills</h1>
                         </div>
                         <div class="col-md-1">
-                            <a class="btn btn-default" href="#" th:href="@{'/user/' + ${user.userID} + '/userskill/new'}" role="button">New</a>
+                            <a class="btn btn-default" href="#"
+                               th:href="@{'/user/' + ${user.userId} + '/userskill/new'}" role="button">New</a>
                         </div>
                     </div>
                 </div>
@@ -64,9 +65,9 @@
                             <tr th:each="jobSkill : ${user.userSkills}">
                                 <td th:text="${userSkill.userSkillName}">Java</td>
                                 <td th:text="${userSkill.userSkillLevel}">3</td>
-                                <td><a href="#" th:href="@{'/user/' + ${user.userID} + '/userskill/' + ${userSkill.userSkillId} + '/show'}">View</a></td>
-                                <td><a href="#" th:href="@{'/user/' + ${user.userID} + '/userskill/' + ${userSkill.userSkillId} + '/update'}">Update</a></td>
-                                <td><a href="#" th:href="@{'/user/' + ${user.userID} + '/userskill/' + ${userSkill.userSkillId} + '/delete'}">Delete</a></td>
+                                <td><a href="#" th:href="@{'/user/' + ${user.userId} + '/userskill/' + ${userSkill.userSkillId} + '/show'}">View</a></td>
+                                <td><a href="#" th:href="@{'/user/' + ${user.userId} + '/userskill/' + ${userSkill.userSkillId} + '/update'}">Update</a></td>
+                                <td><a href="#" th:href="@{'/user/' + ${user.userId} + '/userskill/' + ${userSkill.userSkillId} + '/delete'}">Delete</a></td>
                             </tr>
                         </table>
                     </div>

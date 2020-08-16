@@ -30,8 +30,8 @@ public class UserSkillCommandToUserSkill implements Converter<UserSkillCommand, 
             user.addUserSkill(userSkill);
         }
 
-        userSkill.setUserSkillName(source.getSkillName());
-        userSkill.setUserSkillLevel(source.getSkillLevel());
+        userSkill.setUserSkillName(source.getUserSkillName());
+        userSkill.setUserSkillLevel(source.getUserSkillLevel());
         return userSkill;
     }
 

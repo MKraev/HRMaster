@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class UserCommand {
 
-    private Long userID;
+    private Long userId;
 
     @NotEmpty
     @Size(min = 2, max = 50)
@@ -132,11 +132,11 @@ public class UserCommand {
         this.userSkills = userSkills;
     }
 
-    public Long getUserID() {
-        return userID;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUserID(Long userID) {
-        this.userID = userID;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

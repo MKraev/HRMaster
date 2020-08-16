@@ -23,8 +23,8 @@ public class UserSkillToUserSkillCommand implements Converter<UserSkill, UserSki
         if (userSkill.getUser() != null) {
             userSkillCommand.setUserId(userSkill.getUser().getUserId());
         }
-        userSkillCommand.setSkillName(userSkill.getUserSkillName());
-        userSkillCommand.setSkillLevel(userSkill.getUserSkillLevel());
+        userSkillCommand.setUserSkillName(userSkill.getUserSkillName());
+        userSkillCommand.setUserSkillLevel(userSkill.getUserSkillLevel());
         userSkillCommand.setUserId(userSkill.getUserId());
 
         return userSkillCommand;
