@@ -3,6 +3,7 @@ package com.ehrsystem.hr.commands;
 import com.ehrsystem.hr.model.JobPost;
 import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -34,7 +35,7 @@ public class UserCommand {
     private String resume;
     private String city;
 
-    private Set<UserSkillCommand> userSkills;
+    private Set<UserSkillCommand> userSkills  = new HashSet<>();
 
     public String getUserName() {
         return userName;

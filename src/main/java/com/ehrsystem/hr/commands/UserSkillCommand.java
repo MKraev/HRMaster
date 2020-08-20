@@ -3,7 +3,7 @@ package com.ehrsystem.hr.commands;
 public class UserSkillCommand {
 
     private Long userSkillId;
-    private Long userId;
+    private Long thisUserId;
     private String userSkillName;
     private int userSkillLevel;
 
@@ -15,12 +15,12 @@ public class UserSkillCommand {
         this.userSkillId = userSkillId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getThisUserId() {
+        return thisUserId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setThisUserId(Long thisUserId) {
+        this.thisUserId = thisUserId;
     }
 
     public String getUserSkillName() {

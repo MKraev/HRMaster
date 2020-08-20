@@ -52,7 +52,7 @@ public class UserSkillController {
 
         //need to return back parent id for hidden form property
         UserSkillCommand userSkillCommand = new UserSkillCommand();
-        userSkillCommand.setUserId(Long.valueOf(userId));
+        userSkillCommand.setThisUserId(Long.valueOf(userId));
         model.addAttribute("userSkill", userSkillCommand);
 
         return "user/userskill/userskillform";
@@ -70,10 +70,10 @@ public class UserSkillController {
     public String saveOrUpdate(@ModelAttribute UserSkillCommand command){
         UserSkillCommand savedCommand = userSkillService.saveUserSkillCommand(command);
 
-        log.debug("saved user id:" + savedCommand.getUserId());
+        log.debug("saved user id:" + savedCommand.getThisUserId());
         log.debug("saved userSkill id:" + savedCommand.getUserSkillId());
 
-        return "redirect:/user/" + savedCommand.getUserId() + "/userskill/"+ savedCommand.getUserSkillId() + "/show";
+        return "redirect:/user/" + savedCommand.getThisUserId() + "/userskill/"+ savedCommand.getUserSkillId() + "/show";
     }
 
 

@@ -50,10 +50,10 @@ public class UserSkillServiceImpl implements UserSkillService {
     @Override
     @Transactional
     public UserSkillCommand saveUserSkillCommand(UserSkillCommand command) {
-        Optional<User> userOptional = userRepository.findById(command.getUserId());
+        Optional<User> userOptional = userRepository.findById(command.getThisUserId());
 
         if (!userOptional.isPresent()) {
-            log.error("Recipe not found for id: " + command.getUserId());
+            log.error("Recipe not found for id: " + command.getThisUserId());
             return new UserSkillCommand();
         } else {
             User user = userOptional.get();
@@ -61,7 +61,7 @@ public class UserSkillServiceImpl implements UserSkillService {
             Optional<UserSkill> userSkillOptional = user
                     .getUserSkills()
                     .stream()
-                    .filter(userSkill -> userSkill.getId().equals(command.getUserId()))
+                    .filter(userSkill -> userSkill.getId().equals(command.getThisUserId()))
                     .findFirst();
 
             if (userSkillOptional.isPresent()) {

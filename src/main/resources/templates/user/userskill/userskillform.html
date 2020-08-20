@@ -16,14 +16,13 @@
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
-
+<!--/*@thymesVar id="user" type="com.ehrsystem.hr.commands.UserCommand"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <!--/*@thymesVar id="userSkill" type="com.ehrsystem.hr.commands.UserSkillCommand"*/-->
-            <!--/*@thymesVar id="user" type="com.ehrsystem.hr.model.User"*/-->
-            <form  th:object="${userSkill}" th:action="@{'/user/' + ${userSkill.getUserId()} + '/userskill'} " method="post">
-                <input type="hidden" th:field="*{user.userId}"/>
+            <form  th:object="${userSkill}" th:action="@{'/user/' + ${userSkill.getThisUserId()} + '/userskill'} " method="post">
+                <input type="hidden" th:field="*{thisUserId}"/>
                 <div class="pannel-group">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
