@@ -7,9 +7,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by jt on 8/7/17.
- */
+
 @Slf4j
 @Component
 @Profile({"dev", "prod"})

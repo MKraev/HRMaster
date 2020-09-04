@@ -17,6 +17,15 @@ public class JobSkill {
     @ManyToOne
     private JobPost jobPost;
 
+    public JobSkill() {
+    }
+
+    public JobSkill(String skillName, int skillLevel, JobPost jobPost) {
+        this.skillName = skillName;
+        this.skillLevel = skillLevel;
+        this.jobPost = jobPost;
+    }
+
     public JobPost getJobPost() {
         return jobPost;
     }

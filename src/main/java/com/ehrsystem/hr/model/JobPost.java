@@ -28,6 +28,28 @@ public class JobPost {
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> usersApplied;
 
+    public JobPost() {
+    }
+
+    public JobPost(String title, String description, String requirement, String city, User poster,
+                   Set<JobSkill> jobSkills, Set<User> usersApplied) {
+        this.title = title;
+        this.description = description;
+        this.requirement = requirement;
+        this.city = city;
+        this.poster = poster;
+        this.jobSkills = jobSkills;
+        this.usersApplied = usersApplied;
+    }
+
+    public JobPost(String title, String description, String requirement, String city, User poster) {
+        this.title = title;
+        this.description = description;
+        this.requirement = requirement;
+        this.city = city;
+        this.poster = poster;
+    }
+
     public String getCity() {
         return city;
     }

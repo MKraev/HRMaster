@@ -37,6 +37,47 @@ public class User {
     @ManyToMany
     private Set<JobPost> jobApplied;
 
+    public User() {
+    }
+
+    public User(String username, String password, String firstName, String lastName, String jobTitle,
+                String seniorityLevel, String status, String emailUser, String userType, String resume,
+                String city, Byte[] image, Set<UserSkill> userSkills, Set<JobPost> jobPosted,
+                Set<JobPost> jobApplied) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.jobTitle = jobTitle;
+        this.seniorityLevel = seniorityLevel;
+        this.status = status;
+        this.emailUser = emailUser;
+        this.userType = userType;
+        this.resume = resume;
+        this.city = city;
+        this.image = image;
+        this.userSkills = userSkills;
+        this.jobPosted = jobPosted;
+        this.jobApplied = jobApplied;
+    }
+
+
+    public User(String username, String password, String firstName, String lastName, String jobTitle,
+                String seniorityLevel, String status, String emailUser, String userType, String resume,
+                String city) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.jobTitle = jobTitle;
+        this.seniorityLevel = seniorityLevel;
+        this.status = status;
+        this.emailUser = emailUser;
+        this.userType = userType;
+        this.resume = resume;
+        this.city = city;
+    }
+
     public Set<JobPost> getJobPosted() {
         return jobPosted;
     }
