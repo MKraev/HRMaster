@@ -14,6 +14,15 @@ public class UserSkill {
     @ManyToOne
     private User user;
 
+    public UserSkill() {
+    }
+
+    public UserSkill(String userSkillName, int userSkillLevel, User user) {
+        this.userSkillName = userSkillName;
+        this.userSkillLevel = userSkillLevel;
+        this.user = user;
+    }
+
     public Long getId() {
         return id;
     }
@@ -21,8 +30,6 @@ public class UserSkill {
     public void setId(Long id) {
         this.id = id;
     }
-
-
 
     public String getUserSkillName() {
         return userSkillName;

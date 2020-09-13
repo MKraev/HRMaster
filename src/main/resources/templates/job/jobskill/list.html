@@ -29,6 +29,9 @@
                         <div class="col-md-11">
                             <h1 class="panel-title">Skills</h1>
                         </div>
+                        <div class="col-md-5">
+                        <a class="btn btn-default" href="#" th:href="@{'/job/' + ${jobPost.id} + '/show'}" role="button">Show Job</a>
+                        </div>
                         <div class="col-md-1">
                             <a class="btn btn-default" href="#" th:href="@{'/job/' + ${jobPost.id} + '/jobskill/new'}" role="button">New</a>
                         </div>
