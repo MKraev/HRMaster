@@ -44,7 +44,7 @@ public class UserSkillController {
 
 
     @GetMapping("/user/{userId}/userskill/new")
-    public String newUser(@PathVariable String userId, Model model){
+    public String newUserSkill(@PathVariable String userId, Model model){
 
         //make sure we have a good id value
         UserCommand userCommand = userService.findCommandById(Long.valueOf(userId));

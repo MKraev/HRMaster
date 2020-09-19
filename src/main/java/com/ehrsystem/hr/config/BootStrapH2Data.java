@@ -52,27 +52,28 @@ public class BootStrapH2Data implements CommandLineRunner {
 
         JobPost javaDev = new JobPost("Java Developer","Develop java applications",
                 "To be smart and experienced","Sofia",ivan81);
+
         JobPost jobPosted1 = new JobPost("QA","Test a code","Experiansed QA with good history of qa","Sofia",toni);
-        JobPost jobPosted2 = new JobPost("Developer","Write a code","A lot of code on a daily basis","Sofia",toni);
-        JobPost jobPosted3 = new JobPost("Project manager","Manage projects","Worked In many projects and stakeholders","Sofia",toni);
-        JobPost jobPosted4 = new JobPost("Office assistant","Manage the office","New graduate with ability to maintaince order","Sofia",toni);
-        JobPost jobPosted5 = new JobPost("Managing director","Manage the company","Over 20 years of experience in corporate environment","Sofia",toni);
-        JobPost jobPosted6 = new JobPost("HR","Hire staff","Some experience in headhunting","Sofia",toni);
-        JobPost jobPosted7 = new JobPost("Web Designer","Designe pages","Art person with good numeric skills","Sofia",toni);
-        JobPost jobPosted8 = new JobPost("Business analyst","Analyse the business","Multiple business experience","Sofia",toni);
-        JobPost jobPosted9 = new JobPost("Data Base developer","Develop databases","Develop complec databases","Sofia",toni);
+        JobPost jobPosted2 = new JobPost("Developer","Write a code","A lot of code on a daily basis","Sofia",vili);
+        JobPost jobPosted3 = new JobPost("Project manager","Manage projects","Worked In many projects and stakeholders","Sofia",viki);
+        JobPost jobPosted4 = new JobPost("Office assistant","Manage the office","New graduate with ability to maintaince order","Sofia",rado);
+        JobPost jobPosted5 = new JobPost("Managing director","Manage the company","Over 20 years of experience in corporate environment","Sofia",teo);
+        JobPost jobPosted6 = new JobPost("HR","Hire staff","Some experience in headhunting","Sofia",toli);
+        JobPost jobPosted7 = new JobPost("Web Designer","Designe pages","Art person with good numeric skills","Sofia",petko);
+        JobPost jobPosted8 = new JobPost("Business analyst","Analyse the business","Multiple business experience","Sofia",zlati);
+        JobPost jobPosted9 = new JobPost("Data Base developer","Develop databases","Develop complec databases","Sofia",zdravo);
 
 
         ivan81.getJobPosted().add(javaDev);
         toni.getJobPosted().add(jobPosted1);
-        toni.getJobPosted().add(jobPosted2);
-        toni.getJobPosted().add(jobPosted3);
-        toni.getJobPosted().add(jobPosted4);
-        toni.getJobPosted().add(jobPosted5);
-        toni.getJobPosted().add(jobPosted6);
-        toni.getJobPosted().add(jobPosted7);
-        toni.getJobPosted().add(jobPosted8);
-        toni.getJobPosted().add(jobPosted9);
+        vili.getJobPosted().add(jobPosted2);
+        viki.getJobPosted().add(jobPosted3);
+        rado.getJobPosted().add(jobPosted4);
+        teo.getJobPosted().add(jobPosted5);
+        toli.getJobPosted().add(jobPosted6);
+        petko.getJobPosted().add(jobPosted7);
+        zlati.getJobPosted().add(jobPosted8);
+        zdravo.getJobPosted().add(jobPosted9);
 
         JobSkill java = new JobSkill("Java",8,javaDev);
 

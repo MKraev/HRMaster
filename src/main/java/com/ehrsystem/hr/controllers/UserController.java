@@ -29,7 +29,7 @@ public class UserController {
 
 
     @RequestMapping("/registration")
-    public String checkoutForm(Model model){
+    public String registrationForm(Model model){
 
         model.addAttribute("user", new User());
 
@@ -46,7 +46,7 @@ public class UserController {
 
 
     @RequestMapping(value = "/doregister", method = RequestMethod.POST)
-    public String doCheckout(@Valid User user, BindingResult bindingResult){
+    public String doRegister(@Valid User user, BindingResult bindingResult){
 
         if (bindingResult.hasErrors()) {
             return "user/registration";
