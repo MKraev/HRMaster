@@ -2,6 +2,7 @@ package com.ehrsystem.hr.controllers;
 
 
 import com.ehrsystem.hr.commands.LoginCommand;
+import com.ehrsystem.hr.commands.UserCommand;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,7 +31,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/dologin", method = RequestMethod.POST)
-    public String doLogin(@Valid LoginCommand loginCommand, BindingResult bindingResult){
+    public String doLogin(@Valid UserCommand userCommand, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
             return "user/loginform";
