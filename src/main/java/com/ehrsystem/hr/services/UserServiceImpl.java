@@ -6,8 +6,10 @@ import com.ehrsystem.hr.converters.UserCommandToUser;
 import com.ehrsystem.hr.converters.UserToUserCommand;
 import com.ehrsystem.hr.model.User;
 import com.ehrsystem.hr.repositories.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -20,11 +22,14 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserToUserCommand userToUserCommand;
     private final UserCommandToUser userCommandToUser;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, UserToUserCommand userToUserCommand, UserCommandToUser userCommandToUser) {
+    public UserServiceImpl(UserRepository userRepository, UserToUserCommand userToUserCommand, UserCommandToUser userCommandToUser,
+                           BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.userToUserCommand = userToUserCommand;
         this.userCommandToUser = userCommandToUser;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
@@ -39,8 +44,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(User user) {
 
-        User savedUsers = userRepository.save(user);
-        return savedUsers;
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setActive(1);
+
+
+        return userRepository.save(user);
     }
 
     @Override

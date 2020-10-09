@@ -1,6 +1,5 @@
 package com.ehrsystem.hr.commands;
 
-import com.ehrsystem.hr.model.JobPost;
 import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
@@ -29,7 +28,7 @@ public class UserCommand {
 
     private String jobTitle;
     private String seniorityLevel;
-    private String status;
+    private int status;
     private String emailUser;
     private String userType;
     private String resume;
@@ -85,11 +84,11 @@ public class UserCommand {
         this.seniorityLevel = seniorityLevel;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

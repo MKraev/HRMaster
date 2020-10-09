@@ -18,9 +18,9 @@ public class User {
     private String lastName;
     private String jobTitle;
     private String seniorityLevel;
-    private String status;
+    private int active;
     private String emailUser;
-    private String userType;
+    private String role;
     private String resume;
     private String city;
 
@@ -41,7 +41,7 @@ public class User {
     }
 
     public User(String username, String password, String firstName, String lastName, String jobTitle,
-                String seniorityLevel, String status, String emailUser, String userType, String resume,
+                String seniorityLevel, int active, String emailUser, String userType, String resume,
                 String city, Byte[] image, Set<UserSkill> userSkills, Set<JobPost> jobPosted,
                 Set<JobPost> jobApplied) {
         this.username = username;
@@ -50,9 +50,9 @@ public class User {
         this.lastName = lastName;
         this.jobTitle = jobTitle;
         this.seniorityLevel = seniorityLevel;
-        this.status = status;
+        this.active = active;
         this.emailUser = emailUser;
-        this.userType = userType;
+        this.role = userType;
         this.resume = resume;
         this.city = city;
         this.image = image;
@@ -63,7 +63,7 @@ public class User {
 
 
     public User(String username, String password, String firstName, String lastName, String jobTitle,
-                String seniorityLevel, String status, String emailUser, String userType, String resume,
+                String seniorityLevel, int active, String emailUser, String userType, String resume,
                 String city) {
         this.username = username;
         this.password = password;
@@ -71,9 +71,9 @@ public class User {
         this.lastName = lastName;
         this.jobTitle = jobTitle;
         this.seniorityLevel = seniorityLevel;
-        this.status = status;
+        this.active = active;
         this.emailUser = emailUser;
-        this.userType = userType;
+        this.role = userType;
         this.resume = resume;
         this.city = city;
     }
@@ -166,12 +166,12 @@ public class User {
         this.seniorityLevel = seniorityLevel;
     }
 
-    public String getStatus() {
-        return status;
+    public int getActive() {
+        return active;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setActive(int active) {
+        this.active = active;
     }
 
     public Long getUserId() {
@@ -190,12 +190,12 @@ public class User {
         this.emailUser = emailUser;
     }
 
-    public String getUserType() {
-        return userType;
+    public String getRole() {
+        return role;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getCity() {

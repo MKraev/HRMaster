@@ -9,6 +9,7 @@ import com.ehrsystem.hr.repositories.JobSkillRepository;
 import com.ehrsystem.hr.repositories.UserRepository;
 import com.ehrsystem.hr.repositories.UserSkillRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,36 +19,37 @@ public class BootStrapH2Data implements CommandLineRunner {
     private final JobPostRepository jobPostRepository;
     private final UserSkillRepository userSkillRepository;
     private final JobSkillRepository jobSkillRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
-
-    public BootStrapH2Data(UserRepository userRepository, JobPostRepository jobPostRepository,
-                           UserSkillRepository userSkillRepository, JobSkillRepository jobSkillRepository) {
+    public BootStrapH2Data(UserRepository userRepository, JobPostRepository jobPostRepository, UserSkillRepository userSkillRepository,
+                           JobSkillRepository jobSkillRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.jobPostRepository = jobPostRepository;
         this.userSkillRepository = userSkillRepository;
         this.jobSkillRepository = jobSkillRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
-        User ivan81 = new User("ivan81","password","Ivan","Ivanov",
-                "Java developer","Senior","active","ivan@gmail.com","recruiter",
+        User ivan81 = new User("ivan81",bCryptPasswordEncoder.encode("password"),
+                "Ivan","Ivanov",
+                "Java developer","Senior",1,"ivan@gmail.com","recruiter",
                 "Find the best talents in the city","Sofia");
 
         User teo = new User("teo","password1","Teodor","Petrov",
-                "Data Analyst","senior","active","teo@gmail.com","jobSeeker"," ","Sofia");
+                "Data Analyst","senior",1,"teo@gmail.com","jobSeeker"," ","Sofia");
         User rado = new User("rado","password2","Radoslav","Yosifov",
-                "Charting specialist","middle","active","rado@gmail.com","jobSeeker"," ","Sofia");
-        User vili = new User("vili","password3","Violeta","Genova","Platfor lead","senior","active","vili@gmail.com","jobSeeker"," ","Sofia");
-        User viki = new User("viki","password4","Viktoria","Stoicheva","QA","junior","active","viki@gmail.com","jobSeeker"," ","Sofia");
-        User toni = new User("toni","password5","Anton","Manev","recruiter","junior","active","toni@gmail.com","jobSeeker"," ","Sofia");
-        User toli = new User("toli","password6","Anatoli","Toshev","QA","manager","active","toli@gmail.com","jobSeeker"," ","Sofia");
-        User petko = new User("petko","password7","Petko","Georgiev","Project manager","senior","active","petko@gmail.com","jobSeeker"," ","Sofia");
-        User zlati = new User("zlati","password8","Zlatka","Petkova","Project manager","manager","active","zlati@gmail.com","jobSeeker"," ","Sofia");
-        User milen = new User("milen","password9","Milen","Kraev","Business analyst","senior","active","milen@gmail.com","jobSeeker"," ","Sofia");
-        User zdravo = new User("zdravo","password10","Zdravko","Ivanov","Management","director","active","zdravo@gmail.com","jobSeeker"," ","Sofia");
+                "Charting specialist","middle",1,"rado@gmail.com","jobSeeker"," ","Sofia");
+        User vili = new User("vili","password3","Violeta","Genova","Platfor lead","senior",1,"vili@gmail.com","jobSeeker"," ","Sofia");
+        User viki = new User("viki","password4","Viktoria","Stoicheva","QA","junior",1,"viki@gmail.com","jobSeeker"," ","Sofia");
+        User toni = new User("toni","password5","Anton","Manev","recruiter","junior",1,"toni@gmail.com","jobSeeker"," ","Sofia");
+        User toli = new User("toli","password6","Anatoli","Toshev","QA","manager",1,"toli@gmail.com","jobSeeker"," ","Sofia");
+        User petko = new User("petko","password7","Petko","Georgiev","Project manager","senior",1,"petko@gmail.com","jobSeeker"," ","Sofia");
+        User zlati = new User("zlati","password8","Zlatka","Petkova","Project manager","manager",1,"zlati@gmail.com","jobSeeker"," ","Sofia");
+        User milen = new User("milen","password9","Milen","Kraev","Business analyst","senior",1,"milen@gmail.com","jobSeeker"," ","Sofia");
+        User zdravo = new User("zdravo","password10","Zdravko","Ivanov","Management","director",1,"zdravo@gmail.com","jobSeeker"," ","Sofia");
 
 
         JobPost javaDev = new JobPost("Java Developer","Develop java applications",
