@@ -35,21 +35,21 @@ public class BootStrapH2Data implements CommandLineRunner {
 
         User ivan81 = new User("ivan81",bCryptPasswordEncoder.encode("password"),
                 "Ivan","Ivanov",
-                "Java developer","Senior",1,"ivan@gmail.com","admin",
+                "Java developer","Senior",1,"ivan@gmail.com","ROLE_ADMIN",
                 "Find the best talents in the city","Sofia");
 
-        User teo = new User("teo","password1","Teodor","Petrov",
+        User teo = new User("teo",bCryptPasswordEncoder.encode("password1"),"Teodor","Petrov",
                 "Data Analyst","senior",1,"teo@gmail.com","jobSeeker"," ","Sofia");
-        User rado = new User("rado","password2","Radoslav","Yosifov",
+        User rado = new User("rado",bCryptPasswordEncoder.encode("password2"),"Radoslav","Yosifov",
                 "Charting specialist","middle",1,"rado@gmail.com","jobSeeker"," ","Sofia");
-        User vili = new User("vili","password3","Violeta","Genova","Platfor lead","senior",1,"vili@gmail.com","jobSeeker"," ","Sofia");
-        User viki = new User("viki","password4","Viktoria","Stoicheva","QA","junior",1,"viki@gmail.com","jobSeeker"," ","Sofia");
-        User toni = new User("toni","password5","Anton","Manev","recruiter","junior",1,"toni@gmail.com","jobSeeker"," ","Sofia");
-        User toli = new User("toli","password6","Anatoli","Toshev","QA","manager",1,"toli@gmail.com","jobSeeker"," ","Sofia");
-        User petko = new User("petko","password7","Petko","Georgiev","Project manager","senior",1,"petko@gmail.com","jobSeeker"," ","Sofia");
-        User zlati = new User("zlati","password8","Zlatka","Petkova","Project manager","manager",1,"zlati@gmail.com","jobSeeker"," ","Sofia");
-        User milen = new User("milen","password9","Milen","Kraev","Business analyst","senior",1,"milen@gmail.com","jobSeeker"," ","Sofia");
-        User zdravo = new User("zdravo","password10","Zdravko","Ivanov","Management","director",1,"zdravo@gmail.com","jobSeeker"," ","Sofia");
+        User vili = new User("vili",bCryptPasswordEncoder.encode("password3"),"Violeta","Genova","Platfor lead","senior",1,"vili@gmail.com","jobSeeker"," ","Sofia");
+        User viki = new User("viki",bCryptPasswordEncoder.encode("password4"),"Viktoria","Stoicheva","QA","junior",1,"viki@gmail.com","jobSeeker"," ","Sofia");
+        User toni = new User("toni",bCryptPasswordEncoder.encode("password5"),"Anton","Manev","recruiter","junior",1,"toni@gmail.com","jobSeeker"," ","Sofia");
+        User toli = new User("toli",bCryptPasswordEncoder.encode("password6"),"Anatoli","Toshev","QA","manager",1,"toli@gmail.com","jobSeeker"," ","Sofia");
+        User petko = new User("petko",bCryptPasswordEncoder.encode("password7"),"Petko","Georgiev","Project manager","senior",1,"petko@gmail.com","jobSeeker"," ","Sofia");
+        User zlati = new User("zlati",bCryptPasswordEncoder.encode("password8"),"Zlatka","Petkova","Project manager","manager",1,"zlati@gmail.com","jobSeeker"," ","Sofia");
+        User milen = new User("milen",bCryptPasswordEncoder.encode("password9"),"Milen","Kraev","Business analyst","senior",1,"milen@gmail.com","jobSeeker"," ","Sofia");
+        User zdravo = new User("zdravo",bCryptPasswordEncoder.encode("password10"),"Zdravko","Ivanov","Management","director",1,"zdravo@gmail.com","jobSeeker"," ","Sofia");
 
 
         JobPost javaDev = new JobPost("Java Developer","Develop java applications",

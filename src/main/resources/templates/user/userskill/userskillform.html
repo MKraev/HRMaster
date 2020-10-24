@@ -16,6 +16,14 @@
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
+
+<div class="jumbotron" th:replace="fragments/jumbotron :: jumbotron">
+    <div class="container">
+        <h1>Human Resource System</h1>
+        <p class="lead">Master thesis</p>
+    </div>
+</div>
+
 <!--/*@thymesVar id="user" type="com.ehrsystem.hr.commands.UserCommand"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">

@@ -18,6 +18,14 @@
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
+
+<div class="jumbotron" th:replace="fragments/jumbotron :: jumbotron">
+    <div class="container">
+        <h1>Human Resource System</h1>
+        <p class="lead">Master thesis</p>
+    </div>
+</div>
+
 <!--/*@thymesVar id="jobPost" type="com.ehrsystem.model.JobPost"*/-->
 <!--/*@thymesVar id="jobSkill" type="java.util.Set<com.ehrsystem.commands.jobSkillCommand>"*/-->
 <div class="container-fluid" style="margin-top: 20px">
@@ -69,9 +77,30 @@
                             <tr th:each="jobSkill : ${jobPost.jobSkills}">
                                 <td th:text="${jobSkill.skillName}">Java</td>
                                 <td th:text="${jobSkill.skillLevel}">3</td>
-                                <td><a href="#" th:href="@{'/job/' + ${jobPost.id} + '/jobskill/' + ${jobSkill.id} + '/show'}">View</a></td>
-                                <td><a href="#" th:href="@{'/job/' + ${jobPost.id} + '/jobskill/' + ${jobSkill.id} + '/update'}">Update</a></td>
-                                <td><a href="#" th:href="@{'/job/' + ${jobPost.id} + '/jobskill/' + ${jobSkill.id} + '/delete'}">Delete</a></td>
+                                <td><a href="#" th:href="@{'/job/' + ${jobPost.id} + '/jobskill/' + ${jobSkill.id} + '/show'}">
+                                    <img title=" "
+                                         th:src="@{/images/magnifying-glass-mini.png}" />
+                                    </a>
+                                </td>
+                                <td><a
+                                        href="#"
+                                        sec:authorize="isAuthenticated()"
+                                        th:if="${jobPost.poster.username == #authentication?.principal?.username}"
+                                        th:href="@{'/job/' + ${jobPost.id} + '/jobskill/' + ${jobSkill.id} + '/update'}">
+                                        <img title=" "
+                                             th:src="@{/images/update.png}" />
+                                    </a>
+                                </td>
+                                <td>
+                                    <a
+                                            href="#"
+                                            sec:authorize="isAuthenticated() and !hasRole('ROLE_ADMIN')"
+                                            th:if="${jobPost.poster.username == #authentication?.principal?.username}"
+                                            th:href="@{'/job/' + ${jobPost.id} + '/jobskill/' + ${jobSkill.id} + '/delete'}">
+                                        <img title=" "
+                                             th:src="@{/images/delete.png}" />
+                                    </a>
+                                </td>
                             </tr>
                         </table>
                     </div>
