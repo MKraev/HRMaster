@@ -35,7 +35,7 @@ public class BootStrapH2Data implements CommandLineRunner {
 
         User ivan81 = new User("ivan81",bCryptPasswordEncoder.encode("password"),
                 "Ivan","Ivanov",
-                "Java developer","Senior",1,"ivan@gmail.com","recruiter",
+                "Java developer","Senior",1,"ivan@gmail.com","admin",
                 "Find the best talents in the city","Sofia");
 
         User teo = new User("teo","password1","Teodor","Petrov",

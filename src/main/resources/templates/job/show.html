@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
     <title>Show Recipe</title>
@@ -98,6 +99,8 @@
                             </div>
                             <div class="col-md-1">
                                 <a class="btn btn-default" href="#"
+                                   sec:authorize="isAuthenticated()"
+                                   th:if="${jobPost.poster.username == #authentication?.principal?.username}"
                                    th:href="@{'/job/' + ${jobPost.id} + '/jobskill'}" role="button">View</a>
                             </div>
                         </div>

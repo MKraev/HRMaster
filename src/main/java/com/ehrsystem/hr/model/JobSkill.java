@@ -14,7 +14,7 @@ public class JobSkill {
     private String skillName;
     private int skillLevel;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private JobPost jobPost;
 
     public JobSkill() {

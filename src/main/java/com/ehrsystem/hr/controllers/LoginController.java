@@ -32,6 +32,7 @@ public class LoginController {
     }
 
 
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String doLogin(@Valid UserCommand userCommand, BindingResult bindingResult){
 

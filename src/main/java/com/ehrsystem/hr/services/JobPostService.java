@@ -19,4 +19,5 @@ public interface JobPostService {
     JobPost findById(Long l);
 
     void deleteById(Long idToDelete);
+
 }

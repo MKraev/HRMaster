@@ -1,9 +1,12 @@
 package com.ehrsystem.hr.model;
 
 
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
 
 @Entity
 public class JobPost {
@@ -16,7 +19,7 @@ public class JobPost {
     private String requirement;
     private String city;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private User poster;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobPost")

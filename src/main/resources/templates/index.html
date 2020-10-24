@@ -1,8 +1,17 @@
  <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
     <title>Jobs Home</title>
+
+    <style>
+        .jumbotron {
+            height: 150px;
+            color: #337ab7;
+            text-shadow: #444 0 1px 1px;
+        }
+    </style>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -17,6 +26,14 @@
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
+
+<div class="jumbotron" th:replace="fragments/jumbotron :: jumbotron">
+    <div class="container">
+        <h1>Human Resource System</h1>
+        <p class="lead">Master thesis</p>
+    </div>
+</div>
+
 <!--/*@thymesVar id="jobPosts" type="java.util.List"*/-->
 <!--/*@thymesVar id="jobPost" type="com.ehrsystem.domain.JobPost"*/-->
 <div class="container-fluid" style="margin-top: 20px">
@@ -28,7 +45,6 @@
                         <h1 class="panel-title">All Jobs!</h1>
                     </div>
                 <div class="col-md-1">
-                    <a class="btn btn-default" href="#" th:href="@{'/jobpost'}" role="button">New</a>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive" th:if="${not #lists.isEmpty(jobPosts)}">
@@ -37,23 +53,47 @@
                             <tr>
                                 <th>Job</th>
                                 <th>View</th>
-                                <th>Update</th>
-                                <th>Delete</th>
+                                <th sec:authorize="isAuthenticated()">Update</th>
+                                <th sec:authorize="isAuthenticated()">Delete</th>
                             </tr>
                             </thead>
                             <tr th:remove="all">
                                 <td>Java developer 1</td>
-                                <td><a href="#">View</a></td>
+                                <td>
+                                    <a href="#">
+                                        <img title=" "
+                                             th:src="@{/images/magnifying-glass-mini.png}" />
+                                    </a>
+                                </td>
                             </tr>
                             <tr th:remove="all">
                                 <td>Java developer 2</td>
-                                <td><a href="#">View</a></td>
+                                <td> <a href="#">
+                                    <img title=" "
+                                         th:src="@{/images/magnifying-glass-mini.png}" />
+                                </a></td>
                             </tr>
                             <tr th:each="jobPost : ${jobPosts}">
                                 <td th:text="${jobPost.title}">Java Developer 3</td>
-                                <td><a href="#" th:href="@{'/job/' + ${jobPost.id} + '/show'}">View</a></td>
-                                <td><a href="#" th:href="@{'/job/' + ${jobPost.id} + '/update'}">Update</a></td>
-                                <td><a href="#" th:href="@{'/job/' + ${jobPost.id} + '/delete'}">Delete</a></td>
+                                <td><a href="#" th:href="@{'/job/' + ${jobPost.id} + '/show'}">
+                                    <img title=" "
+                                         th:src="@{/images/magnifying-glass-mini.png}" />
+                                    </a>
+                                </td>
+                                <td><a href="#" sec:authorize="isAuthenticated()"
+                                       th:if="${jobPost.poster.username == #authentication?.principal?.username}"
+                                       th:href="@{'/job/' + ${jobPost.id} + '/update'}">
+                                        <img title=" "
+                                             th:src="@{/images/update.png}" />
+                                    </a>
+                                </td>
+                                <td><a href="#" sec:authorize="isAuthenticated()"
+                                       th:if="${jobPost.poster.username == #authentication?.principal?.username}"
+                                       th:href="@{'/job/' + ${jobPost.id} + '/delete'}">
+                                        <img title=" "
+                                             th:src="@{/images/delete.png}" />
+                                    </a>
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -61,6 +101,10 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="container" th:replace="fragments/footer :: footer">
+<p>footer</p>
 </div>
 
 </body>

@@ -46,6 +46,7 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
         http.
                 authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/job/**").permitAll()
                 .antMatchers("/favicon.ico").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/registration").permitAll()
@@ -61,14 +62,21 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
                 .accessDeniedPage("/login");
         log.debug("Http configuring");
 
+        http.headers().contentTypeOptions().disable();
+        http.headers().contentSecurityPolicy("script-src 'unsafe-inline'");
+        http.headers().frameOptions().sameOrigin();
+
+
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**","/webjars/**",
-                        "/console/**","images/favicon.*");
+                        "/console/**","/favicon.ico");
     }
+
+
 
 
 

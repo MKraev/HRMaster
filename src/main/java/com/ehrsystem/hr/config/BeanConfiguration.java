@@ -20,4 +20,6 @@ public class BeanConfiguration implements WebMvcConfigurer {
         registrationBean.addUrlMappings("/console/*");
         return registrationBean;
     }
+
+
 }

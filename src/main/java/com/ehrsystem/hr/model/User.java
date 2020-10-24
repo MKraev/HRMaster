@@ -1,5 +1,9 @@
 package com.ehrsystem.hr.model;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -211,4 +215,6 @@ public class User {
         this.userSkills.add(userSkill);
         return this;
     }
+
+
 }

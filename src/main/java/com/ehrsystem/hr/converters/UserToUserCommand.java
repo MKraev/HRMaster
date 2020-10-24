@@ -27,7 +27,7 @@ public class UserToUserCommand implements Converter<User, UserCommand> {
 
         final UserCommand command = new UserCommand();
         command.setUserId(source.getUserId());
-        command.setUserName(source.getUsername());
+        command.setUsername(source.getUsername());
         command.setPassword(source.getPassword());
         command.setFirstName(source.getFirstName());
         command.setLastName(source.getLastName());
@@ -35,7 +35,7 @@ public class UserToUserCommand implements Converter<User, UserCommand> {
         command.setSeniorityLevel(source.getSeniorityLevel());
         command.setStatus(source.getActive());
         command.setEmailUser(source.getEmailUser());
-        command.setUserType(source.getRole());
+        command.setRole(source.getRole());
         command.setResume(source.getResume());
         command.setCity(source.getCity());
 

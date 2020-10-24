@@ -12,7 +12,7 @@ public class UserCommand {
 
     @NotEmpty
     @Size(min = 2, max = 50)
-    private String userName;
+    private String username;
 
     @NotEmpty
     @Size(min = 2, max = 50)
@@ -30,18 +30,18 @@ public class UserCommand {
     private String seniorityLevel;
     private int status;
     private String emailUser;
-    private String userType;
+    private String role;
     private String resume;
     private String city;
 
     private Set<UserSkillCommand> userSkills  = new HashSet<>();
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -100,12 +100,12 @@ public class UserCommand {
         this.emailUser = emailUser;
     }
 
-    public String getUserType() {
-        return userType;
+    public String getRole() {
+        return role;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setRole(String userType) {
+        this.role = userType;
     }
 
     public String getResume() {
