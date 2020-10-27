@@ -1,13 +1,15 @@
 package com.ehrsystem.hr.services;
 
 import com.ehrsystem.hr.commands.UserSkillCommand;
-import com.ehrsystem.hr.model.User;
+import com.ehrsystem.hr.model.UserSkill;
 
 public interface UserSkillService {
 
-    UserSkillCommand saveUserSkillCommand(UserSkillCommand command);
+    UserSkill save(UserSkill userSkill);
 
-    UserSkillCommand findByUserIdAndSkillId(Long userId, Long userSkillId);
+    UserSkill findByUserIdAndSkillId(Long userSkillId);
 
     void deleteById(Long userId, Long idToDelete);
+
+    UserSkillCommand saveUserSkillCommand(UserSkillCommand command);
 }

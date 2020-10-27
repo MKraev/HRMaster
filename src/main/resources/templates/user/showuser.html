@@ -77,9 +77,9 @@
                             <div class="col-md-11 ">
                                 <h1 class="panel-title">Skills</h1>
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                                 <a class="btn btn-default" href="#"
-                                   th:href="@{'/user/' + ${user.userId} + '/userskill'}" role="button">View</a>
+                                   th:href="@{'/user/userskill'}" role="button">View</a>
                             </div>
                         </div>
                     </div>
@@ -98,9 +98,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="panel-body"></div>
+                <div class="panel-body"></div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="container" th:replace="fragments/footer :: footer">
+    <p>footer</p>
+</div>
+
 </body>
 </html>

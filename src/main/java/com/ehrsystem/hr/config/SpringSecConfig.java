@@ -50,6 +50,8 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/favicon.ico").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/registration").permitAll()
+                .antMatchers("/doregister").permitAll()
+                .antMatchers("/registrationcompleted").permitAll()
                 .antMatchers("/admin/**").hasAnyAuthority().anyRequest()
                 .authenticated().and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")

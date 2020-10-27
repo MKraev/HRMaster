@@ -2,9 +2,16 @@ package com.ehrsystem.hr.controllers;
 
 import com.ehrsystem.hr.commands.UserCommand;
 import com.ehrsystem.hr.commands.UserSkillCommand;
+import com.ehrsystem.hr.converters.UserSkillCommandToUserSkill;
+import com.ehrsystem.hr.converters.UserSkillToUserSkillCommand;
+import com.ehrsystem.hr.model.User;
+import com.ehrsystem.hr.model.UserSkill;
+import com.ehrsystem.hr.repositories.UserRepository;
+import com.ehrsystem.hr.repositories.UserSkillRepository;
 import com.ehrsystem.hr.services.UserService;
 import com.ehrsystem.hr.services.UserSkillService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,62 +25,80 @@ public class UserSkillController {
 
     private final UserSkillService userSkillService;
     private final UserService userService;
+    private final UserRepository userRepository;
+    private final UserSkillCommandToUserSkill commandToUserSkill;
+    private final UserSkillToUserSkillCommand userSkillToUserSkillCommand;
+    private final UserSkillRepository userSkillRepository;
 
-    public UserSkillController(UserSkillService userSkillService, UserService userService) {
+    public UserSkillController(UserSkillService userSkillService, UserService userService, UserRepository userRepository, UserSkillCommandToUserSkill commandToUserSkill, UserSkillToUserSkillCommand userSkillToUserSkillCommand, UserSkillRepository userSkillRepository) {
         this.userSkillService = userSkillService;
         this.userService = userService;
+        this.userRepository = userRepository;
+        this.commandToUserSkill = commandToUserSkill;
+        this.userSkillToUserSkillCommand = userSkillToUserSkillCommand;
+        this.userSkillRepository = userSkillRepository;
     }
 
-    @GetMapping("/user/{userId}/userskill")
-    public String listUserSkill(@PathVariable String userId, Model model){
+    @GetMapping("/user/userskill")
+    public String listUserSkill( Model model){
 
-        // use command object to avoid lazy load errors in Thymeleaf.
-        model.addAttribute("user", userService.findCommandById(Long.valueOf(userId)));
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user= userRepository.findByUsername(username);
+
+        model.addAttribute("user", user);
 
         return "user/userskill/list";
     }
 
 
-    @GetMapping("/user/{userId}/userskill/{id}/show")
-    public String showUserSkill(@PathVariable String userId,
-                                       @PathVariable String id, Model model){
-        model.addAttribute("userSkill", userSkillService.findByUserIdAndSkillId(Long.valueOf(userId), Long.valueOf(id)));
 
-        return "user/userskill/show";
-    }
+    @GetMapping("/user/userskill/new")
+    public String newUserSkill( Model model){
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user= userRepository.findByUsername(username);
 
-
-    @GetMapping("/user/{userId}/userskill/new")
-    public String newUserSkill(@PathVariable String userId, Model model){
-
-        //make sure we have a good id value
-        UserCommand userCommand = userService.findCommandById(Long.valueOf(userId));
-        //todo raise exception if null
-
-        //need to return back parent id for hidden form property
         UserSkillCommand userSkillCommand = new UserSkillCommand();
-        userSkillCommand.setThisUserId(Long.valueOf(userId));
+
         model.addAttribute("userSkill", userSkillCommand);
 
         return "user/userskill/userskillform";
     }
 
-    @GetMapping("/user/{userId}/userskill/{id}/update")
-    public String updateUserSkill(@PathVariable String userId,
-                                         @PathVariable String id, Model model){
-        model.addAttribute("userSkill", userSkillService.findByUserIdAndSkillId(Long.valueOf(userId), Long.valueOf(id)));
 
-        return "user/userskill/userskillform";
+    @PostMapping("user/userskill/new")
+    public String saveOrUpdate(@ModelAttribute UserSkillCommand command){
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user= userRepository.findByUsername(username);
+        command.setThisUserId(user.getUserId());
+        UserSkill savedCommand = userSkillService.save(commandToUserSkill.convert(command));
+
+        user.getUserSkills().add(savedCommand);
+        userService.save(user);
+
+        return "redirect:/user/" + user.getUserId() + "/userskill/"+ savedCommand.getId() + "/show";
     }
 
-    @PostMapping("user/{userId}/userskill")
-    public String saveOrUpdate(@ModelAttribute UserSkillCommand command){
-        UserSkillCommand savedCommand = userSkillService.saveUserSkillCommand(command);
 
-        log.debug("saved user id:" + savedCommand.getThisUserId());
-        log.debug("saved userSkill id:" + savedCommand.getUserSkillId());
+    @GetMapping("/user/{userId}/userskill/{id}/show")
+    public String showUserSkill(@PathVariable String id, Model model){
 
-        return "redirect:/user/" + savedCommand.getThisUserId() + "/userskill/"+ savedCommand.getUserSkillId() + "/show";
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user= userRepository.findByUsername(username);
+
+        model.addAttribute("userSkill", userSkillService.findByUserIdAndSkillId(Long.valueOf(id)));
+
+        return "/user/userskill/show";
+    }
+
+    @GetMapping("/user/{userId}/userskill/{id}/update")
+    public String updateUserSkill( @PathVariable String id, Model model){
+
+        UserSkillCommand userSkillCommand = userSkillToUserSkillCommand
+                .convert(userSkillService.findByUserIdAndSkillId(Long.valueOf(id)));
+
+        model.addAttribute("userSkill", userSkillCommand);
+
+        return "user/userskill/userskillform";
     }
 
 
@@ -84,7 +109,7 @@ public class UserSkillController {
 
         userSkillService.deleteById(Long.valueOf(userId), Long.valueOf(id));
 
-        return "redirect:/user/" + userId + "/userskill";
+        return "redirect:/user/userskill";
     }
 }
 

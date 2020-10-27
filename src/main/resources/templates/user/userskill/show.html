@@ -34,9 +34,9 @@
                         <div class="col-md-11">
                             <h1 class="panel-title">Skill</h1>
                         </div>
-                        <div class="col-md-1">
-                            <a class="btn btn-default" href="#"
-                               th:href="@{'/user/' + ${userSkill.thisUserId} + '/userskill'}" role="button">All skills</a>
+                        <div class="col-md-2">
+                            <a class="btn btn-default center-block text-center" href="#"
+                               th:href="@{'/user/userskill'}" role="button">All skills</a>
                         </div>
                     </div>
                 </div>
@@ -67,6 +67,10 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="container" th:replace="fragments/footer :: footer">
+    <p>footer</p>
 </div>
 
 </body>

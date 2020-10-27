@@ -11,7 +11,7 @@ public class UserSkill {
     private String userSkillName;
     private int userSkillLevel;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
     public UserSkill() {

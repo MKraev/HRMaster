@@ -47,11 +47,11 @@ public class JobSkillController {
     @GetMapping("/job/{jobPostId}/jobskill/new")
     public String newJobPost(@PathVariable String jobPostId, Model model){
 
-        //make sure we have a good id value
-        JobPostCommand jobPostCommand = jobPostService.findCommandById(Long.valueOf(jobPostId));
-        //todo raise exception if null
 
-        //need to return back parent id for hidden form property
+        JobPostCommand jobPostCommand = jobPostService.findCommandById(Long.valueOf(jobPostId));
+
+
+
         JobSkillCommand jobSkillCommand = new JobSkillCommand();
         jobSkillCommand.setJobPostId(Long.valueOf(jobPostId));
         model.addAttribute("jobSkill", jobSkillCommand);

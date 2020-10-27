@@ -93,4 +93,25 @@ public class JobPostController {
         }
         return "redirect:/";
     }
+
+    @GetMapping("/job/{id}/apply")
+    public String applyJobPost(@PathVariable String id){
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        JobPost jobPost = jobPostService.findById(Long.valueOf(id));
+        User user= userRepository.findByUsername(username);
+
+        if (Objects.equals(username, jobPost.getPoster().getUsername())) {
+            return "job/show";
+        }
+        else{
+
+            user.getJobApplied().add(jobPost);
+            jobPost.getUsersApplied().add(user);
+
+            JobPost saveJobPost = jobPostService.save(jobPost);
+            User saveUser = userService.save(user);
+
+            return "job/applycompleted";
+        }
+    }
 }

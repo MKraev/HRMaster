@@ -1,7 +1,8 @@
 package com.ehrsystem.hr.repositories;
 
 import com.ehrsystem.hr.model.UserSkill;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserSkillRepository extends CrudRepository<UserSkill, Long> {
+
+public interface UserSkillRepository extends JpaRepository<UserSkill, Long> {
 }

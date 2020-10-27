@@ -6,6 +6,7 @@ import com.ehrsystem.hr.model.User;
 import com.ehrsystem.hr.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,17 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Slf4j
 @Controller
 public class UserController {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
-    public UserController(UserRepository userRepository) {
+    public UserController(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
 
@@ -56,6 +57,8 @@ public class UserController {
             return "user/registration";
         }
 
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setActive(1);
         User savedUser = userRepository.save(user);
 
         return "user/registrationcompleted";

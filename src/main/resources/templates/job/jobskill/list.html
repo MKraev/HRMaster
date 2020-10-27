@@ -94,7 +94,7 @@
                                 <td>
                                     <a
                                             href="#"
-                                            sec:authorize="isAuthenticated() and !hasRole('ROLE_ADMIN')"
+                                            sec:authorize="isAuthenticated()"
                                             th:if="${jobPost.poster.username == #authentication?.principal?.username}"
                                             th:href="@{'/job/' + ${jobPost.id} + '/jobskill/' + ${jobSkill.id} + '/delete'}">
                                         <img title=" "
@@ -109,5 +109,10 @@
         </div>
     </div>
 </div>
+
+<div class="container" th:replace="fragments/footer :: footer">
+    <p>footer</p>
+</div>
+
 </body>
 </html>

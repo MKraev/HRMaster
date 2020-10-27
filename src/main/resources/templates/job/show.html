@@ -105,11 +105,11 @@
                             <div class="col-md-11 ">
                                 <h1 class="panel-title">Skills</h1>
                             </div>
-                            <div class="col-md-1">
-                                <a class="btn btn-default" href="#"
+                            <div class="col-md-10">
+                                <a class="btn btn-default"  href="#"
                                    sec:authorize="isAuthenticated()"
                                    th:if="${jobPost.poster.username == #authentication?.principal?.username}"
-                                   th:href="@{'/job/' + ${jobPost.id} + '/jobskill'}" role="button">View</a>
+                                   th:href="@{'/job/' + ${jobPost.id} + '/jobskill'}" role="button">List</a>
                             </div>
                         </div>
                     </div>
@@ -128,9 +128,46 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1 class="panel-title">Apply to the job!</h1>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-10">
+                                    <a class="btn btn-default"  href="*"
+                                       sec:authorize="isAuthenticated()"
+                                       th:href="@{'/job/' + ${jobPost.id} + '/apply'}" role="button">Apply</a>
+                                </div>
+                                <div class="col-md-12"
+                                     sec:authorize="isAuthenticated()"
+                                     th:if="${jobPost.poster.username == #authentication?.principal?.username}">
+                                    <ul>
+                                        <li th:remove="all">username firstName lastName</li>
+                                        <li th:remove="all">username firstName lastName</li>
+                                        <li th:each="jobUserApplyed : ${jobPost.usersApplied}"
+                                            th:text="${(jobUserApplyed.getUsername() +
+                                        ' ' + jobUserApplyed.getFirstName() + ' ' + jobUserApplyed.getLastName())}">ivan Ivan Ivanov
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-body"></div>
+                <div class="panel-body"></div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="container" th:replace="fragments/footer :: footer">
+    <p>footer</p>
+</div>
+
 </body>
 </html>
