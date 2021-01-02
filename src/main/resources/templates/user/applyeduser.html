@@ -31,14 +31,11 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="pannel-group">
                 <div class="panel panel-primary">
+
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-3">
                                 <h1 class="panel-title" th:text="${user.username}">User Name</h1>
-                            </div>
-                            <div class="col-md-1">
-                                <a class="btn btn-default" href="#"
-                                   th:href="@{'/user/' + ${user.userId} + '/image'}" role="button">Change Image</a>
                             </div>
                         </div>
                     </div>
@@ -60,15 +57,8 @@
                             <div class="col-md-3">
                                 <h5 th:text="${user.lastName}">Ivanov</h5>
                             </div>
-                            <div class="col-md-6">
-                                <img src="../../static/images/HRS.PNG"
-                                     th:src="@{'/user/' + ${user.userId} + '/userimage'}"
-                                     width="200" height="200">
-                            </div>
                         </div>
                     </div>
-                    <a class="btn btn-default" href="#"
-                       th:href="@{'/adduserinfo'}" role="button">Add information</a>
                 </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -89,8 +79,6 @@
                                 <h1 class="panel-title">Skills</h1>
                             </div>
                             <div class="col-md-2">
-                                <a class="btn btn-default" href="#"
-                                   th:href="@{'/user/userskill'}" role="button">View</a>
                             </div>
                         </div>
                     </div>

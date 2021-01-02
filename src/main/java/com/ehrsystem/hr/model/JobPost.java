@@ -29,7 +29,7 @@ public class JobPost {
     @JoinTable(name = "jobpost_user",
             joinColumns = @JoinColumn(name = "jobpost_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Set<User> usersApplied;
+    private Set<User> usersApplied  = new HashSet<>();
 
     public JobPost() {
     }
@@ -42,6 +42,16 @@ public class JobPost {
         this.city = city;
         this.poster = poster;
         this.jobSkills = jobSkills;
+        this.usersApplied = usersApplied;
+    }
+
+    public JobPost(String title, String description, String requirement, String city, User poster
+            , Set<User> usersApplied) {
+        this.title = title;
+        this.description = description;
+        this.requirement = requirement;
+        this.city = city;
+        this.poster = poster;
         this.usersApplied = usersApplied;
     }
 
@@ -114,6 +124,7 @@ public class JobPost {
     }
 
     public void setUsersApplied(Set<User> usersApplied) {
+
         this.usersApplied = usersApplied;
     }
 

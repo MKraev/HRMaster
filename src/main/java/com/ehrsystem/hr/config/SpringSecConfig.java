@@ -38,7 +38,6 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -50,6 +49,7 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/favicon.ico").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/registration").permitAll()
+                .antMatchers("/user/adduserinfo").permitAll()
                 .antMatchers("/doregister").permitAll()
                 .antMatchers("/registrationcompleted").permitAll()
                 .antMatchers("/admin/**").hasAnyAuthority().anyRequest()
@@ -77,9 +77,4 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**","/webjars/**",
                         "/console/**","/favicon.ico");
     }
-
-
-
-
-
 }

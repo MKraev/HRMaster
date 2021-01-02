@@ -47,7 +47,6 @@ public class UserServiceImpl implements UserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
 
-
         return userRepository.save(user);
     }
 
@@ -71,6 +70,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(Long idToDelete) {
         userRepository.deleteById(idToDelete);
+    }
+
+    @Override
+    public User update(User updateUser,User userLogged){
+        userLogged.setFirstName(updateUser.getFirstName());
+        userLogged.setLastName(updateUser.getLastName());
+        userLogged.setJobTitle(updateUser.getJobTitle());
+        userLogged.setSeniorityLevel(updateUser.getSeniorityLevel());
+        userLogged.setEmailUser(updateUser.getEmailUser());
+        userLogged.setResume(updateUser.getResume());
+        userLogged.setRole(updateUser.getRole());
+        userLogged.setCity(updateUser.getCity());
+
+        return userLogged;
     }
 
     @Override

@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
-    <title>Show Recipe</title>
+    <title>Show JobPost</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -139,7 +139,13 @@
                                 <div class="col-md-10">
                                     <a class="btn btn-default"  href="*"
                                        sec:authorize="isAuthenticated()"
+                                       th:if="${jobPost.poster.username != #authentication?.principal?.username}"
                                        th:href="@{'/job/' + ${jobPost.id} + '/apply'}" role="button">Apply</a>
+                                </div>
+                                <div class="col-md-10">
+                                    <a class="btn btn-default"  href="*"
+                                       sec:authorize="!isAuthenticated()"
+                                       th:href="@{'/login'}" role="button">You need to login to apply!</a>
                                 </div>
                                 <div class="col-md-12"
                                      sec:authorize="isAuthenticated()"
@@ -147,9 +153,11 @@
                                     <ul>
                                         <li th:remove="all">username firstName lastName</li>
                                         <li th:remove="all">username firstName lastName</li>
-                                        <li th:each="jobUserApplyed : ${jobPost.usersApplied}"
+                                        <li th:each="jobUserApplyed : ${jobPost.usersApplied}">
+                                        <a  th:href="@{'/user/' + ${jobUserApplyed.getUserId()} + '/viewuserapplyed'}"
                                             th:text="${(jobUserApplyed.getUsername() +
                                         ' ' + jobUserApplyed.getFirstName() + ' ' + jobUserApplyed.getLastName())}">ivan Ivan Ivanov
+                                        </a>
                                         </li>
                                     </ul>
                                 </div>

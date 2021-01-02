@@ -3,6 +3,7 @@ package com.ehrsystem.hr.services;
 
 import com.ehrsystem.hr.commands.JobPostCommand;
 import com.ehrsystem.hr.model.JobPost;
+import com.ehrsystem.hr.model.User;
 
 import java.util.Set;
 
@@ -20,4 +21,7 @@ public interface JobPostService {
 
     void deleteById(Long idToDelete);
 
+    Set<JobPost> getJobPostByUser(User user);
+
+    Set<JobPost> getJobApplyedByUser(User user);
 }

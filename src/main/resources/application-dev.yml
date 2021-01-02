@@ -1,9 +1,9 @@
 spring:
   datasource:
+    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/hr_dev
     username: hr_dev_user
     password: HR
-#    platform: mysql
   jpa:
     properties:
       hibernate:
@@ -12,7 +12,7 @@ spring:
           merge:
             entity_copy_observer: allow
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: mysql
     show-sql: true
@@ -24,4 +24,3 @@ spring:
 #            scripts:
 #              action: create
 #              create-target: HR_database_create.sql
-

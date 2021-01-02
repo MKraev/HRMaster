@@ -33,6 +33,7 @@ public class UserCommand {
     private String role;
     private String resume;
     private String city;
+    private Byte[] image;
 
     private Set<UserSkillCommand> userSkills  = new HashSet<>();
 
@@ -138,5 +139,13 @@ public class UserCommand {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public Byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(Byte[] image) {
+        this.image = image;
     }
 }

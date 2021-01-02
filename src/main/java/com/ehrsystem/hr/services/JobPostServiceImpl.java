@@ -5,7 +5,9 @@ import com.ehrsystem.hr.commands.JobPostCommand;
 import com.ehrsystem.hr.converters.JobPostCommandToJobPost;
 import com.ehrsystem.hr.converters.JobPostToJobPostCommand;
 import com.ehrsystem.hr.model.JobPost;
+import com.ehrsystem.hr.model.User;
 import com.ehrsystem.hr.repositories.JobPostRepository;
+import com.ehrsystem.hr.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,17 +22,31 @@ public class JobPostServiceImpl implements JobPostService {
     private final JobPostRepository jobPostRepository;
     private final JobPostToJobPostCommand jobPostToJobPostCommand;
     private final JobPostCommandToJobPost jobPostCommandToJobPost;
+    private final UserRepository userRepository;
 
-    public JobPostServiceImpl(JobPostRepository jobPostRepository, JobPostToJobPostCommand jobPostToJobPostCommand, JobPostCommandToJobPost jobPostCommandToJobPost) {
+    public JobPostServiceImpl(JobPostRepository jobPostRepository, JobPostToJobPostCommand jobPostToJobPostCommand, JobPostCommandToJobPost jobPostCommandToJobPost, UserRepository userRepository) {
         this.jobPostRepository = jobPostRepository;
         this.jobPostToJobPostCommand = jobPostToJobPostCommand;
         this.jobPostCommandToJobPost = jobPostCommandToJobPost;
+        this.userRepository = userRepository;
     }
 
     @Override
     public Set<JobPost> getJobPost() {
         Set<JobPost> jobPostSet = new HashSet<>();
         jobPostRepository.findAll().iterator().forEachRemaining(jobPostSet::add);
+        return jobPostSet;
+    }
+
+    @Override
+    public Set<JobPost> getJobPostByUser(User user) {
+        Set<JobPost> jobPostSet = user.getJobPosted();
+        return jobPostSet;
+    }
+
+    @Override
+    public Set<JobPost> getJobApplyedByUser(User user) {
+        Set<JobPost> jobPostSet = user.getJobApplied();
         return jobPostSet;
     }
 
@@ -62,6 +78,8 @@ public class JobPostServiceImpl implements JobPostService {
     public void deleteById(Long idToDelete) {
         jobPostRepository.deleteById(idToDelete);
     }
+
+
 
     @Override
     @Transactional

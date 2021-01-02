@@ -5,13 +5,6 @@
     <meta charset="UTF-8"/>
     <title>Jobs Home</title>
 
-    <style>
-        .jumbotron {
-            height: 220px;
-            color: #337ab7;
-            text-shadow: #333 0 1.5px 1.5px;
-        }
-    </style>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -27,9 +20,8 @@
 </head>
 <body>
 
-<div class="jumbotron" th:replace="fragments/jumbotron :: jumbotron">
+<div class="navbar" th:replace="fragments/jumbotron :: jumbotron">
     <div class="container">
-        <h1>Human Resource System</h1>
         <p class="lead">Master thesis</p>
     </div>
 </div>
@@ -41,6 +33,15 @@
         <div class="col-md-6 col-md-offset-3">
 
             <div class="panel panel-primary">
+                <div class="container">
+                    <form class="navbar-form navbar-center" method="get"
+                          th:action="@{/search}">
+                        <div class="form-group">
+                            <input id="txtSearch" type="text" class="form-control" name="keyword">
+                        </div>
+                        <button type="submit" class="btn btn-default">Search</button>
+                    </form>
+                 </div>
                     <div class="panel-heading">
                         <h1 class="panel-title">All Jobs!</h1>
                     </div>
@@ -74,7 +75,11 @@
                                 </a></td>
                             </tr>
                             <tr th:each="jobPost : ${jobPosts}">
-                                <td th:text="${jobPost.title}">Java Developer 3</td>
+                                <td>
+                                    <a href="#" th:text="${jobPost.title}"
+                                       th:href="@{'/job/' + ${jobPost.id} + '/show'}">Java Developer 3
+                                    </a>
+                                </td>
                                 <td><a href="#" th:href="@{'/job/' + ${jobPost.id} + '/show'}">
                                     <img title=" "
                                          th:src="@{/images/magnifying-glass-mini.png}" />
@@ -108,7 +113,8 @@
         </div>
     </div>
 </div>
-
+<div class="panel-body"></div>
+<div class="panel-body"></div>
 <div class="container" th:replace="fragments/footer :: footer">
 <p>footer</p>
 </div>

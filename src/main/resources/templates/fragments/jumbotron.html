@@ -11,39 +11,19 @@
 
     <link th:href="@{/css/custom.css}" rel="stylesheet" media="screen"/>
 
-    <style th:remove="all">
-
-         .jumbotron {
-             height: 220px;
-             color: #337ab7;
-             text-shadow: #333 0 1.5px 1.5px;
-         }
-
-
-        body {
-            color: #337ab7;
-            font-family: "Proxima";
-        }
-
-        body {
-            color: #337ab7;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-size: 8px;
-            line-height: normal;
-        }
-
-    </style>
 
 </head>
 <body>
-<div class="jumbotron" th:fragment="jumbotron">
+<div class="navbar" th:fragment="jumbotron">
     <div class="container">
-        <a class="btn btn-default" href="#" th:href="@{'/index'}" role="button">Home</a>
-        <a class="btn btn-default" href="#" th:href="@{'/login'}" role="button">Login</a>
-        <a class="btn btn-default" href="#" th:href="@{'/jobpost'}" role="button">Post a job!</a>
-        <a class="btn btn-default" href="#" th:href="@{'/user'}" role="button">My account</a>
-        <h1>Human Recourse System</h1>
-        <p class="lead" >Master thesis</p>
+        <nav class="navbar navbar-dark bg-primary">
+            <a class="btn btn-default" href="#" th:href="@{'/index'}" role="button">Home</a>
+            <a class="btn btn-default" href="#" th:href="@{'/login'}" role="button">Login</a>
+            <a class="btn btn-default" href="#" th:href="@{'/jobpost'}" role="button">Post a job!</a>
+            <a class="btn btn-default" href="#" th:href="@{'/user'}" role="button">My account</a>
+            <a class="btn btn-default" href="#" th:href="@{'/myjobs'}" role="button">My jobs</a>
+            <p class="lead" >Master thesis</p>
+        </nav>
     </div>
 </div>
 

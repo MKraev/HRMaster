@@ -39,7 +39,7 @@ public class User {
     private Set<JobPost> jobPosted  = new HashSet<>();
 
     @ManyToMany
-    private Set<JobPost> jobApplied;
+    private Set<JobPost> jobApplied = new HashSet<>();
 
     public User() {
     }
