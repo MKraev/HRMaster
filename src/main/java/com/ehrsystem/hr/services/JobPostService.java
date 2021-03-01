@@ -1,10 +1,8 @@
 package com.ehrsystem.hr.services;
 
-
 import com.ehrsystem.hr.commands.JobPostCommand;
 import com.ehrsystem.hr.model.JobPost;
 import com.ehrsystem.hr.model.User;
-
 import java.util.Set;
 
 public interface JobPostService {

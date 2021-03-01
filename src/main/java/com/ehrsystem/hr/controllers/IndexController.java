@@ -27,7 +27,7 @@ public class IndexController {
     }
 
 
-    @RequestMapping({"", "/", "/index"})
+    @RequestMapping({"", "/", "/index", "/error"})
     public String getIndexPage(Model model) {
 
         model.addAttribute("jobPosts", jobPostService.getJobPost());

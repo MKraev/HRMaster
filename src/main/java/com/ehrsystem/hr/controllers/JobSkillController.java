@@ -2,8 +2,6 @@ package com.ehrsystem.hr.controllers;
 
 import com.ehrsystem.hr.commands.JobPostCommand;
 import com.ehrsystem.hr.commands.JobSkillCommand;
-import com.ehrsystem.hr.model.JobPost;
-import com.ehrsystem.hr.model.JobSkill;
 import com.ehrsystem.hr.services.JobPostService;
 import com.ehrsystem.hr.services.JobSkillService;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,5 @@
 package com.ehrsystem.hr.commands;
 
-
 import com.ehrsystem.hr.model.User;
 import lombok.NoArgsConstructor;
 import java.util.HashSet;

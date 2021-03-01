@@ -4,7 +4,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Email;
 
-
 public class LoginCommand {
 
     @NotEmpty

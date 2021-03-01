@@ -1,6 +1,5 @@
 package com.ehrsystem.hr.services;
 
-
 import com.ehrsystem.hr.commands.JobPostCommand;
 import com.ehrsystem.hr.converters.JobPostCommandToJobPost;
 import com.ehrsystem.hr.converters.JobPostToJobPostCommand;
@@ -10,7 +9,6 @@ import com.ehrsystem.hr.repositories.JobPostRepository;
 import com.ehrsystem.hr.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;

@@ -1,7 +1,6 @@
 package com.ehrsystem.hr.services;
 
 import com.ehrsystem.hr.commands.JobSkillCommand;
-import com.ehrsystem.hr.model.JobSkill;
 
 public interface JobSkillService {
 

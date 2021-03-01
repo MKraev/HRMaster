@@ -1,7 +1,6 @@
 package com.ehrsystem.hr.controllers;
 
 
-import com.ehrsystem.hr.commands.UserCommand;
 import com.ehrsystem.hr.model.User;
 import com.ehrsystem.hr.services.ImageService;
 import com.ehrsystem.hr.services.UserService;
@@ -53,6 +52,7 @@ public class ImageController {
     @GetMapping("user/{id}/userimage")
     public void renderImageFromDB(@PathVariable String id, HttpServletResponse response) throws IOException {
         User userCommand = userService.findById(Long.valueOf(id));
+
 
         if (userCommand.getImage() != null) {
             byte[] byteArray = new byte[userCommand.getImage().length];
