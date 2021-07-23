@@ -27,13 +27,14 @@ public class IndexController {
     }
 
 
-    @RequestMapping({"", "/", "/index", "/error"})
+    @RequestMapping({"", "/", "/index"})
     public String getIndexPage(Model model) {
 
         model.addAttribute("jobPosts", jobPostService.getJobPost());
 
         return "index";
     }
+
 
     @RequestMapping("/search")
     public String searchIndexPage(Model model, String keyword) {
